@@ -17,10 +17,12 @@ Constraints:
 1 <= a.length, b.length <= 104
 a and b consist only of '0' or '1' characters.
 Each string does not contain leading zeros except for the zero itself.
+	code*******
+	
 
-class Solution {
-public:
-    string addBinary(string a, string b) {
+#include <bits/stdc++.h>
+using namespace std;
+ void  addBinary(string a, string b) {
         int i = a.size()-1;
         int j = b.size()-1;
         
@@ -53,6 +55,10 @@ public:
         if(carry)ans += '1';  // if value of carry is still there
         
         reverse(ans.begin() , ans.end());
-        return ans;
+     cout<<ans;
     }
-};
+int main() 
+{
+   addBinary("11","1");
+    return 0;
+}
