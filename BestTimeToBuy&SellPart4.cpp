@@ -85,13 +85,13 @@ public:
  
      }
     
- int solveSpaceOptimization(vector<int>&prices,int k){
+ int solveSpaceOptimization(vector<int>&prices,int k){   //  scpace complexity O(K)
        int  n = prices.size();
 
         vector<vector<int>> curr(2,vector<int>(k+1,0));
         vector<vector<int>>next (2, vector<int>(k+1,0));
         
-        for(int index = n-1;index>=0;index--){
+        for(int index = n-1;index>=0;index--){  //time complexity O(N*2*k) = O(N*K)
             for(int buy =0;buy <=1;buy++){
                 for(int limit = 1;limit <= k;limit++){
                           int profit = 0;    
