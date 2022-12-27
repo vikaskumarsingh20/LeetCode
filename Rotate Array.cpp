@@ -18,19 +18,20 @@ Explanation:
 rotate 1 steps to the right: [99,-1,-100,3]
 rotate 2 steps to the right: [3,99,-1,-100]
 
+// 1.Approach 
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
         int n=nums.size();
-        k%=n;
+       k = k%n;  //3%7 = 3
         
-        if(k>0){
-            reverse(nums.begin(),nums.end());
-            reverse(nums.begin(),nums.begin()+k);
-            reverse(nums.begin()+k,nums.end());
+        if(k>0){  // 3 > 0
+            reverse(nums.begin(),nums.end()); // 7,6,5,4,3,2,1
+            reverse(nums.begin(),nums.begin()+k); //  5,6,7,4,3,2,1
+            reverse(nums.begin()+k,nums.end()); // 5,6,7,1,2,3,4 
         }
     }
-}; 
+}
 
 // 2 approach
 
@@ -41,7 +42,7 @@ public:
         
 //         for(int i = 0; i < nums.size(); i++)
 //         {
-//             nums[(i + k) % nums.size()] = temp[i];
+//             nums[(i + k) % nums.size()] = temp[i];  // this is formula to rotate array 
 //         }
         
 //     }
