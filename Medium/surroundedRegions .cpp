@@ -3,10 +3,10 @@ public:
     void DFS(vector<vector<char>>& board, int i, int j, int m, int n) {
         if(i<0 or j<0 or i>=m or j>=n or board[i][j] != 'O') return;
         board[i][j] = '#';
-        DFS(board, i-1, j, m, n);
-        DFS(board, i+1, j, m, n);
-        DFS(board, i, j-1, m, n);
-        DFS(board, i, j+1, m, n);
+        DFS(board, i-1, j, m, n);//left
+        DFS(board, i+1, j, m, n); // right
+        DFS(board, i, j-1, m, n); // down 
+        DFS(board, i, j+1, m, n);//up
     }
     
     void solve(vector<vector<char>>& board) {
@@ -35,8 +35,6 @@ public:
       //4. After all DFSs have been performed, board contains three elements,#,O and X
       //5. 'O' are left over elements which are not connected to any boundary O, so flip them to 'X'
       //6. '#' are elements which cannot be flipped to 'X', so flip them back to 'O'
-    
-      
      int m = board.size();
         
       if(m == 0) return;  
@@ -50,8 +48,6 @@ public:
          if(board[i][n-1] == 'O')
              DFS(board, i, n-1, m, n);
      }
-        
-        
      //Moving over first and last row   
      for(int j=0; j<n; j++) {
          if(board[0][j] == 'O')
