@@ -23,6 +23,17 @@ Input: nums = [1]
 Output: 1
   //CODE
 
+ 	// Most Important
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) { 
+       int ans=0; 
+	   for(auto x:nums) // 2 2 1
+	   ans^=x;    // 2^2 =0 0 0 * 0 0 1 =  0 0 1
+	   return ans;
+    }
+};
+// Method 2
 class Solution {
 public:
   /* 
