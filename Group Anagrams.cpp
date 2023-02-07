@@ -26,6 +26,16 @@ public:
         
         map<string, vector<string>> mp;
         
+         /*
+                Consider example 1 : strs = ["eat","tea","tan","ate","nat","bat"]
+                
+                After the below opeartion of for loop map will contain
+                
+                aet -- eat, tea, ate
+                ant -- tan, nat
+                abt -- bat
+        */
+        
         for(auto str : strs){
             
             string temp = str;    //this step for the copy and not lost the original string..
