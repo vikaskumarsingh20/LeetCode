@@ -27,26 +27,56 @@ Output: [10]
 
 //time complexity O(N)
 // space complexity O(1)
+
 class Solution {
 public:
     vector<int> partitionLabels(string s) {
-        vector<int> ans;
-        int pos;
-        int len = 0;
-        for(int i=0; i<s.length(); i++)
-        {
-            pos = s.find_last_of(s[i]);
-            len = pos-i+1;
-            for(int j=i+1; j<pos; j++)
-            {
-                if(s.find_last_of(s[j])>pos)
-                    pos=s.find_last_of(s[j]);
-                len = pos-i+1;
-            }
-            i = pos;
-            ans.push_back(len);
+        unordered_map<char,int>mp;
+        // filling impact of character's
+        for(int i = 0; i < s.size(); i++){
+            char ch = s[i]; // 1st index
+            mp[ch] = i;
         }
-        return ans;
-
+        // making of result
+        vector<int> res;
+        int prev = -1; 
+        int maxi = 0;
+        
+        for(int i = 0; i < s.size(); i++){
+            maxi = max(maxi, mp[s[i]]);
+            if(maxi == i){ // reached at last occurance index like a = 8 
+                // partition time
+                res.push_back(maxi - prev);
+                prev = maxi;
+            }
+        }
+        return res;
     }
 };
+
+//JAVA CODE
+class Solution {
+    public List<Integer> partitionLabels(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        // filling impact of character's
+        for(int i = 0; i < s.length(); i++){
+            char ch = s.charAt(i);
+            map.put(ch, i);
+        }
+        // making of result
+        List<Integer> res = new ArrayList<>();
+        int prev = -1;
+        int max = 0;
+        
+        for(int i = 0; i < s.length(); i++){
+            char ch = s.charAt(i);
+            max = Math.max(max, map.get(ch));
+            if(max == i){
+                // partition time
+                res.add(max - prev);
+                prev = max;
+            }
+        }
+        return res;
+    }
+}
