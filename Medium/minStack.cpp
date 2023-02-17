@@ -36,6 +36,8 @@ minStack.top();    // return 0
 minStack.getMin(); // return -2
 //CODE
 
+TIME COMPLEXITY: O(N) //size of stack
+SPACE COMPLEXITY: O(1) // not using extra memory
 class MinStack {
 private:
    private:
